@@ -1,12 +1,13 @@
-use std::{env,io::{stdin}};
+use std::{env, io::stdin};
 
 /*
     MODES [CREATE READ]
     create
     read
 */
+
 fn main() {
-    let args:Vec<String> = env::args().collect();
+    let args: Vec<String> = env::args().collect();
     let mode = &args[1];
 
     print!("Please enter your username : ");
@@ -23,7 +24,7 @@ fn main() {
 
     if mode == "create" {
         println!("Create {} {} {}",username,service,mpass);
-    } 
+    }
     else if mode == "read" {
         println!("Read {} {} {}",username,service,mpass);
     }
@@ -31,3 +32,4 @@ fn main() {
         println!("Unknown Mode");
     }
 }
+
