@@ -1,36 +1,20 @@
-use std::{env, io::stdin};
+use std::env;
+use std::process;
+// use std::io::stdin;
 
-/*
-    MODES [CREATE READ]
-    create
-    read
-*/
+use rustpass::Flags;
+
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let mode = &args[1];
+    let flags = Flags::new(&args).unwrap_or_else(|err| {
+        println!("Problem parsing arguments: {}", err);
+        process::exit(1);
+    });
 
-    println!("Please enter your username : ");
-    let mut username = String::new();
-    stdin().read_line(&mut username).unwrap();
-
-    println!("Please enter your service : ");
-    let mut service = String::new();
-    stdin().read_line(&mut service).unwrap();
-
-    println!("Please enter your master password : ");
-    let mut mpass = String::new();
-    stdin().read_line(&mut mpass).unwrap();
-
-    if mode == "create" {
-        println!(
-            "Create {} {} {}",
-            username.trim(),
-            service.trim(),
-            mpass.trim()
-        );
-    } else if mode == "read" {
-        println!("Read {} {} {}", username, service, mpass);
-    } else {
-        println!("Unknown Mode");
-    }
+    println!("username: {}", flags.username);
+    println!("service: {}", flags.service);
+    println!("master-password: {}", flags.md);
+    println!("opts: {}", flags.opts);
+    println!("length: {}", flags.len);
+    println!("seed: {}", flags.seed);
 }
