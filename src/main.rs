@@ -1,20 +1,13 @@
-use std::env;
-use std::process;
-// use std::io::stdin;
-
-use rustpass::Flags;
+mod args;
+use args::RustPassArgs;
+use clap::Parser;
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    let flags = Flags::new(&args).unwrap_or_else(|err| {
-        println!("Problem parsing arguments: {}", err);
-        process::exit(1);
-    });
+    let args = RustPassArgs::parse(); 
 
-    println!("username: {}", flags.username);
-    println!("service: {}", flags.service);
-    println!("master-password: {}", flags.md);
-    println!("opts: {}", flags.opts);
-    println!("length: {}", flags.len);
-    println!("seed: {}", flags.seed);
+    println!("Username : {}",args.username);
+    println!("service : {}",args.service);
+    println!("mpass : {}",args.mpass);
+    println!("len : {}",args.len);
+    println!("seed : {}",args.seed);
 }
