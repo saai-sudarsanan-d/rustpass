@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.1.8", features = ["derive"] }
 rpassword = "7.2"
+sha2 = "0.10.6"
