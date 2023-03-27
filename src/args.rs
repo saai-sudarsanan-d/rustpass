@@ -10,21 +10,21 @@ pub struct RustPassArgs {
 
     /// Length of your Password
     #[clap(default_value_t = 16)]
-    pub len: u32,
+    pub len: u8,
     /// Seed Value
     #[clap(default_value_t = 0)]
-    pub seed: u32,
+    pub seed: u64,
 
     /// Use Uppercase
-    #[clap(long, short, action=ArgAction::SetTrue)]
+    #[clap(long, short, default_value_t = true, action=ArgAction::SetTrue)]
     pub uppercase: bool,
     /// Use Lowercase
-    #[clap(long, short, action=ArgAction::SetTrue)]
+    #[clap(long, short, default_value_t = true, action=ArgAction::SetTrue)]
     pub lowercase: bool,
     /// Use Special Characters
-    #[clap(long, short, action=ArgAction::SetTrue)]
+    #[clap(long, short, default_value_t = true, action=ArgAction::SetTrue)]
     pub special_chars: bool,
     /// Use Digits
-    #[clap(long, short, action=ArgAction::SetTrue)]
+    #[clap(long, short, default_value_t = true, action=ArgAction::SetTrue)]
     pub digits: bool,
 }
